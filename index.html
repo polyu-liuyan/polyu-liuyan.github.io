@@ -19782,8 +19782,10 @@
                                     </path>
                                 </svg>
                                 <p class="flex-grow">
-                                    EEG Analysis: 2-3 postdoc researcher, 2-3 PhD researcher, 1 research assistant
-                                    <a href="#eeg" class="text-blue-600 hover:underline inline-block">(details)</a>
+                                    Medical Speech Interaction System: 1 postdoc researcher, 1 research associate, 2-3
+                                    research assistant
+                                    <a href="#details-healthcare"
+                                        class="text-blue-600 hover:underline inline-block" data-scroll>(details)</a>
                                 </p>
                             </li>
                             <li class="flex items-start">
@@ -19795,7 +19797,7 @@
                                 </svg>
                                 <p class="flex-grow">
                                     Computer Music: 1-2 postdoc researcher, 1-2 PhD researcher, 1 research associate
-                                    <a href="#music" class="text-blue-600 hover:underline inline-block">(details)</a>
+                                    <a href="#details-music" class="text-blue-600 hover:underline inline-block" data-scroll>(details)</a>
                                 </p>
                             </li>
                             <li class="flex items-start">
@@ -19806,10 +19808,8 @@
                                     </path>
                                 </svg>
                                 <p class="flex-grow">
-                                    Medical Speech Interaction System: 1 postdoc researcher, 1 research associate, 2-3
-                                    research assistant
-                                    <a href="#healthcare"
-                                        class="text-blue-600 hover:underline inline-block">(details)</a>
+                                    EEG Analysis: 2-3 postdoc researcher, 2-3 PhD researcher, 1 research assistant
+                                    <a href="#details-eeg" class="text-blue-600 hover:underline inline-block" data-scroll>(details)</a>
                                 </p>
                             </li>
                         </ul>
@@ -19928,7 +19928,7 @@
                     </li>
                 </ul>
 
-                <p class="text-base text-gray-700 mb-2">PhD Students</p>
+                <p class="text-base text-gray-700 mb-2">Supervised Research PhD Students</p>
                 <ul class="space-y-1 text-base text-gray-700">
                     <li class="flex items-start">
                         <svg class="w-3.5 h-3.5 mt-1 mr-2 text-yellow-400 flex-shrink-0" aria-hidden="true"
@@ -20029,9 +20029,9 @@
 
             </div>
             <div class="bg-white rounded-lg shadow p-6">
-                <h3 class="text-lg font-medium mb-2" id="here">Details of Recrutment</h3>
+                <h3 class="text-lg font-medium mb-2">Details of Recrutment</h3>
                 <div>
-                    <h2 class="text-base font-medium mb-2" id="healthcare">Artificial Intelligence in Healthcare</h2>
+                    <h2 class="text-base font-medium mb-2" id="details-healthcare">Artificial Intelligence in Healthcare</h2>
 
 
                     <div class="mb-2">
@@ -20173,7 +20173,7 @@
                         </ul>
                     </div>
 
-                    <h2 class="text-base font-medium mt-4 mb-2" id="music">Artificial Intelligence in Music</h2>
+                    <h2 class="text-base font-medium mt-4 mb-2" id="details-music">Artificial Intelligence in Music</h2>
                     <div class="mb-2">
                         <h2 class="text-gray-700 font-medium">Postdoctoral
                             Researcher in Computer Music</h2>
@@ -20320,7 +20320,7 @@
                         </ul>
                     </div>
 
-                    <h2 class="text-base font-medium mt-4 mb-2" id="eeg">Artificial Intelligence in EEG</h2>
+                    <h2 class="text-base font-medium mt-4 mb-2" id="details-eeg">Artificial Intelligence in EEG</h2>
 
                     <div class="mb-2">
                         <h2 class="text-gray-700 font-medium">Postdoctoral
@@ -20750,8 +20750,29 @@
                 categoryElement.innerHTML = papersList;
             }
         }
-
+        
         renderPapers(papers);
+
+        document.addEventListener('DOMContentLoaded', function() {
+            let links = document.querySelectorAll('a[data-scroll]');
+            
+            links.forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    let targetId = this.getAttribute('href').substring(1);
+                    
+                    setTimeout(function() {
+                        let targetElement = document.getElementById(targetId);
+                        if (targetElement) {
+                            targetElement.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    }, 100);
+                });
+            });
+        });
     </script>
 
 
